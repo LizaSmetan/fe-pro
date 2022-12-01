@@ -15,6 +15,13 @@ export default class CounterActions extends Component {
       visible: !prev.visible
     }))
   }
+  componentWillUnmount(){
+    
+    this.setState({
+      visible: true
+    })
+    console.log('componentWillUnmount')
+  }
   render(){
     return (
       <div>
