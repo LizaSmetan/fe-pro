@@ -4,9 +4,22 @@ import CounterActions from './CounterActions';
 import CounterDisplay from './CounterDisplay';
 
 export default class Counter extends Component {
-  state = {
-    counter: 0,
-  };
+  constructor(){
+    super();
+
+    this.decrement = this.decrement.bind(this)
+
+    this.state = {
+      counter: 0,
+      visible: true,
+      isError: false
+    };
+  }
+
+  componentDidUpdate(nextProp, nextState){
+    console.log('componentDidUpdate', nextProp, nextState, '')
+  }
+  
 
   decrement = (e) => {
     this.setState((prevState) => ({
@@ -20,10 +33,30 @@ export default class Counter extends Component {
     }));
   };
 
+  setVisible = () => {
+    this.setState((prev) => ({
+      visible: !prev.visible
+    }))
+  }
+
+  componentDidCatch(error, info){
+    this.setState((prev) => ({
+      isError: !prev.isError
+    }))
+  }
+
   render() {
+    if(this.isError){
+      return <h2>Error</h2>
+    }
     return (
       <div>
-        <CounterActions decrement={this.decrement} increment={this.increment} />
+        <button onClick={this.setVisible}>Показати / приховати</button>
+        {
+          this.state.visible ? (
+            <CounterActions decrement={this.decrement} increment={this.increment} />
+          ) : null
+        }
         <CounterDisplay counter={this.state.counter} />
       </div>
     );
