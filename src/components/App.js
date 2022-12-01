@@ -1,11 +1,11 @@
 // import Switch from './Switch';
-import Counter from './Counter';
+import LoginForm from './LoginForm';
 
 function App() {
   return (
     <div>
       {/* <Switch message="Test" /> */}
-      <Counter />
+      <LoginForm />
     </div>
   );
 }
