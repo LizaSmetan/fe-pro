@@ -1,12 +1,16 @@
-export default function CounterActions({ decrement, increment }) {
-  return (
-    <div>
-      <button onClick={decrement} data-step={2}>
-        -
-      </button>
-      <button onClick={increment} data-step={3}>
-        +
-      </button>
-    </div>
-  );
+import { Component } from "react";
+
+export default class CounterActions extends Component {
+  render(){
+    return (
+      <div>
+        <button onClick={this.props.decrement} data-step={1}>
+          -
+        </button>
+        <button onClick={this.props.increment} data-step={1}>
+          +
+        </button>
+      </div>
+    );
+  }
 }

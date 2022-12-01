@@ -1,10 +1,9 @@
-// import Switch from './Switch';
 import Counter from './Counter';
-
+import Label from './Label';
 function App() {
   return (
-    <div>
-      {/* <Switch message="Test" /> */}
+    <div style={{textAlign: 'center'}}>
+      <Label/>
       <Counter />
     </div>
   );
