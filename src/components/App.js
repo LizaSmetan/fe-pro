@@ -1,11 +1,8 @@
-import Counter from './Counter';
-import Label from './Label';
+import ArticleList from "./ArticlesList";
+
 function App() {
   return (
-    <div style={{textAlign: 'center'}}>
-      <Label/>
-      <Counter />
-    </div>
+    <ArticleList/>
   );
 }
 
