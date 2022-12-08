@@ -1,8 +1,8 @@
-import ArticleList from "./ArticlesList";
+import List from "./List";
 
 function App() {
   return (
-    <ArticleList/>
+    <List/>
   );
 }
 

@@ -1,32 +1,26 @@
 import { Component } from "react";
 
-import { getArticlesByQuery } from '../services/api'
+import { getArticlesById } from '../services/api'
 import Article from "./Article";
 
 export default class ArticleList extends Component{
     state = {
-        articles: []
+        article: false
     }
 
     async componentDidMount(){
-        const articles = await getArticlesByQuery('react')
-        this.setState({articles})
+        const article = await getArticlesById('1')
+        this.setState({article})
     }
 
     render(){
-        const { articles } = this.state;
-        if(!articles.length){
+        const { article } = this.state;
+        if(!article){
             return <div>Loading...</div>
         }
         return (
             <ul>
-                {
-                    articles.map((article) => {
-                        return (
-                            <Article article={article} key={article.objectID}/>
-                        )
-                    })
-                }
+                <Article article={article} key={article.objectID}/>
             </ul>
         )
     }
