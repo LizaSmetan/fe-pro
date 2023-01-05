@@ -8,9 +8,16 @@ export default class ArticleList extends Component{
         article: false
     }
 
-    async componentDidMount(){
-        const article = await getArticlesById('1')
-        this.setState({article})
+    componentDidMount(){
+        setTimeout(() => {
+            alert(`Доброго ранку, сьогодні ${new Date()}`)
+        }, 1000)
+    }
+    componentDidUpdate(){
+        console.log('Дякуємо, що лишаєтесь з нами')
+    }
+    componentWillUnmount(){
+        localStorage.setItem('random', Math.floor(Math.random() * 11))
     }
 
     render(){

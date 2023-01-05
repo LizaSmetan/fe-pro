@@ -1,31 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+
+import {LangContext} from '../services/langContext'
+import LangSwitcher from "./LangSwitcher";
+import MainContent from "./MainContent";
 
 const HookTest = () => {
-
-    // menu
-    const [menuIsOpened, setMenuIsOpened] = useState(false)
-    const openMenu = () => {}
-    useEffect(() => {
-        setMenuIsOpened(menuIsOpened, sidebarHidden)
-
-        return () => {}
-    }, [menuIsOpened])
-    // menu
-    
-    // sidebar
-    const [sidebarHidden, setSidebarHidden] = useState(false)
-    const sidebarColor = '#fff'
-
-    const keyupFunc = (e) => {
-        console.log(menuIsOpened, sidebarHidden)
-    }
+    const [lang, setLang] = useState('uk')
 
     return (
         <>
-        <div onClick={() => setMenuIsOpened(pre => !pre)}>{`${menuIsOpened}`}</div>
-        <div onClick={() => setSidebarHidden(pre => !pre)}>{`${sidebarHidden}`}</div>
-        <div onClick={() => keyupFunc()}>run</div>
+        <LangContext.Provider value={{lang, setLang}}>
+            <LangSwitcher/>
+            <MainContent/>
+        </LangContext.Provider>
         </>
-        )
+    )
 }
 export default HookTest;
